@@ -11,11 +11,14 @@ const styles = StyleSheet.create({
 });
 
 const AppBarTab = ({ text, to, onPress }) => {
-  return (
-    <Pressable onPress={onPress}>
-      <Link style={styles.container} to={to}>
-        <Text style={styles.text}>{text}</Text>
-      </Link>
+  if (to) return (
+    <Link style={styles.container} to={to}>
+      <Text style={styles.text}>{text}</Text>
+    </Link>
+  );
+  if (onPress) return (
+    <Pressable style={styles.container} onPress={onPress}>
+      <Text style={styles.text}>{text}</Text>
     </Pressable>
   );
 };

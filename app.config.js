@@ -1,5 +1,7 @@
-{
-  "expo": {
+import "dotenv/config";
+
+export default {
+  expo: {
     "name": "fullstackopen-part10",
     "slug": "fullstackopen-part10",
     "version": "1.0.0",
@@ -11,20 +13,23 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
+    assetBundlePatterns: [
       "**/*"
     ],
-    "ios": {
+    ios: {
       "supportsTablet": true
     },
-    "android": {
+    android: {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
     },
-    "web": {
+    web: {
       "favicon": "./assets/favicon.png"
+    },
+    extra: {
+      apolloURI: process.env.APOLLO_URI
     }
-  }
-}
+  },
+};
