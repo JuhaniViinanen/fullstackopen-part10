@@ -21,15 +21,10 @@ const AppBar = () => {
   const { data } = useQuery(ME, {
     fetchPolicy: "cache-and-network"
   });
-  console.log(data);
 
   const signOut = async () => {
-    let token = await authStorage.getAccessToken();
-    console.log(token);
     await authStorage.removeAccessToken();
     await client.resetStore();
-    token = await authStorage.getAccessToken();
-    console.log(token);
   };
 
   return (

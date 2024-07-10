@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const RepositoryItem = ({item}) => {
+const RepositoryItem = ({ item }) => {
   return (
     <View style={styles.container} testID="repositoryItem" >
       <View style={{ flexDirection: "row", columnGap: 20 }}>

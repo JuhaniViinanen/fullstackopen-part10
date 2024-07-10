@@ -15,7 +15,6 @@ const useSignIn = () => {
       }
     });
     if (response?.data?.authenticate?.accessToken) {
-      console.log("User signed in");
       await authStorage.setAccessToken(response.data.authenticate.accessToken);
       await client.resetStore();
     }

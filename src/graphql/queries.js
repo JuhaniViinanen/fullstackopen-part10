@@ -14,6 +14,15 @@ export const GET_REPOSITORIES = gql`
   }
 `;
 
+export const GET_REPOSITORY = gql`
+  ${BASIC_REPO_FIELDS}
+  query Repository($repositoryId: ID!) {
+    repository(id: $repositoryId) {
+      ...BasicRepoFields
+    }
+  }
+`;
+
 export const ME = gql`
   query {
     me {
