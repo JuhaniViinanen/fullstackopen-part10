@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 
 const RepositoryItem = ({item}) => {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="repositoryItem" >
       <View style={{ flexDirection: "row", columnGap: 20 }}>
         <Image style={styles.userImage} source={{ uri: item.ownerAvatarUrl }} />
         <View style={{ rowGap: 10 , width: 0, flexGrow: 1}}>
