@@ -4,9 +4,10 @@ import useRepository from "../../hooks/useRepository";
 
 const SingleRepository = () => {
   const { repositoryId } =  useParams();
-  const { repository } = useRepository(repositoryId);
+  const { data } = useRepository(repositoryId);
 
-  return <RepositoryItem item={repository} />;
+  if (data) return <RepositoryItem item={data.repository} githubButton />;
+  return null;
 };
 
 export default SingleRepository;
