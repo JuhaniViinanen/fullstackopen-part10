@@ -17,13 +17,13 @@ const styles = StyleSheet.create({
   ratingText: {
     color: theme.colors.primary,
     borderColor: theme.colors.primary,
-    height: 44,
-    width: 44,
-    padding: 11,
+    height: 50,
+    width: 50,
+    paddingTop: 14,
     textAlign: "center",
     borderStyle: "solid",
     borderWidth: 2,
-    borderRadius: 22,
+    borderRadius: 25,
   }
 });
 

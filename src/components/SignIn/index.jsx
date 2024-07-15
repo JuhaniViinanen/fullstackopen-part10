@@ -71,6 +71,8 @@ export const SignInContainer = ({ onSubmit }) => {
         placeholder="Username"
         value={formik.values.username}
         onChangeText={formik.handleChange("username")}
+        inputMode="text"
+        autoCapitalize="none"
       />
       {usernameError && ( <Text style={styles.errorText}>{usernameError}</Text> )}
       <TextInput
@@ -79,6 +81,8 @@ export const SignInContainer = ({ onSubmit }) => {
         value={formik.values.password}
         onChangeText={formik.handleChange("password")}
         secureTextEntry
+        inputMode="text"
+        autoCapitalize="none"
       />
       {passwordError && ( <Text style={styles.errorText}>{passwordError}</Text> )}
       <Pressable style={styles.button} onPress={formik.handleSubmit}>
