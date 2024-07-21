@@ -16,7 +16,7 @@ const SingleRepositoryContainer = ({ data }) => {
     <FlatList
       data={reviewNodes}
       ItemSeparatorComponent={ItemSeparator}
-      renderItem={ReviewItem}
+      renderItem={({ item }) => <ReviewItem item={item} />}
       keyExtractor={item => item.id}
       ListHeaderComponent={() => <RepositoryItem item={data.repository} githubButton />}
       ListHeaderComponentStyle={{ marginBottom: 10 }}
