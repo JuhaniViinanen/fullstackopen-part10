@@ -8,6 +8,7 @@ import SingleRepository from "./SingleRepository";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import ReviewForm from "./ReviewForm";
+import MyReviews from "./MyReviews";
 
 const styles = StyleSheet.create({
   container: {
@@ -22,12 +23,13 @@ const Main = () => {
     <View style={styles.container}>
       <AppBar />
       <Routes>
-        <Route path="/" element={<RepositoryList />} />
-        <Route path="/:repositoryId" element={<SingleRepository />} />
+        <Route path='/' element={<RepositoryList />} />
+        <Route path='/:repositoryId' element={<SingleRepository />} />
         <Route path='/ReviewForm' element={<ReviewForm />} />
-        <Route path="/SignIn" element={<SignIn />} />
-        <Route path="/SignUp" element={<SignUp />} />
-        <Route path="*" element={<Navigate to={"/"} replace />} />
+        <Route path='/MyReviews' element={<MyReviews />} />
+        <Route path='/SignIn' element={<SignIn />} />
+        <Route path='/SignUp' element={<SignUp />} />
+        <Route path='*' element={<Navigate to={"/"} replace />} />
       </Routes>
     </View>
   );
