@@ -7,7 +7,7 @@ import useRepository from "../../hooks/useRepository";
 
 const ItemSeparator = () => <View style={{ height: 10 }} />;
 
-const SingleRepositoryContainer = ({ data }) => {
+const SingleRepositoryContainer = ({ data, onEndReached }) => {
   const reviewNodes = data
     ? data.repository.reviews.edges.map(edge => edge.node)
     : [];
@@ -20,16 +20,22 @@ const SingleRepositoryContainer = ({ data }) => {
       keyExtractor={item => item.id}
       ListHeaderComponent={() => <RepositoryItem item={data.repository} githubButton />}
       ListHeaderComponentStyle={{ marginBottom: 10 }}
+      onEndReached={onEndReached}
+      onEndReachedThreshold={0.5}
     />
   );
 };
 
 const SingleRepository = () => {
   const { repositoryId } =  useParams();
-  const { data } = useRepository(repositoryId);
+  const { data, fetchMore } = useRepository({
+    repositoryId,
+    first: 8,
+    after: '',
+  });
   
   return data
-    ? <SingleRepositoryContainer data={data} />
+    ? <SingleRepositoryContainer data={data} onEndReached={fetchMore} />
     : null;
 };
 

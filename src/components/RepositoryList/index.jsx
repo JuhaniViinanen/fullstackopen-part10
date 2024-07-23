@@ -44,7 +44,6 @@ const HeaderPicker = ({ value, setValue }) => {
   </Picker>;
 };
 
-// eslint-disable-next-line no-unused-vars
 export const RepositoryListContainer = ({
   repositories,
   onPress = () => null,
@@ -52,6 +51,7 @@ export const RepositoryListContainer = ({
   setValue = () => null,
   search = '',
   setSearch = () => null,
+  onEndReach = () => null,
 }) => {
 
   const repositoryNodes = repositories
@@ -79,6 +79,8 @@ export const RepositoryListContainer = ({
         </View>
       }
       ListHeaderComponentStyle={{ marginVertical: 10 }}
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.5}
     />
   );
 };
@@ -87,18 +89,24 @@ const RepositoryList = () => {
   const [search, setSearch] = useState('');
   const [searchKeyword] = useDebounce(search, 500);
   const [sorting, setSorting] = useState(0);
-  const { data } = useRepositories({...sortingOptions[sorting], searchKeyword});
+  const { repositories, fetchMore } = useRepositories({
+    ...sortingOptions[sorting],
+    searchKeyword,
+    first: 8,
+    after: '',
+  });
   const navigate = useNavigate();
 
   const onPress = (itemId) => navigate(`/${itemId}`);
 
   return <RepositoryListContainer
-    repositories={data?.repositories}
+    repositories={repositories}
     onPress={onPress}
     value={sorting}
     setValue={setSorting}
     search={search}
     setSearch={setSearch}
+    onEndReach={fetchMore}
   />;
 };
 
